@@ -22,6 +22,9 @@ public class Action {
 	{
 		
 	}
+	public void acc()
+	{
+	}
 
 	
 		
