@@ -1,0 +1,13 @@
+import java.awt.Color;
+
+public class HealCard extends Card 
+{
+	public HealCard(Color color, String effect, int energy, String name) {
+		super(Color.YELLOW, "The Hero gains health between the ranges of 5 to 10", 1, "Heal");
+		
+	}
+	
+	public void use(Hero hero) {
+		
+	}
+}
