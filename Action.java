@@ -8,28 +8,19 @@ public class Action {
 		enemy = e;
 	}
 	
-	public void attack(int damage)
+	public void Attack(Hero hero)
 	{
-		
+		hero.takeDamage(enemy.getAttackStat());
 	}
 	
-	public void heal(int heal)
+	public void Heal(int heal)
 	{
-		
+		enemy.heal(heal);
 	}
-
-	public void debuff(String type)
+	
+	public void burn(Hero hero, int turns, int damage)
 	{
-		
-	}
-	//changes
-	
-		
-	
-	
-	public void buff(String type)
-	{
-		
+		hero.takeDamageOverTime(turns, damage);
 	}
 	
 }

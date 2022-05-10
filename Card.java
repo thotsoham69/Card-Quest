@@ -1,13 +1,14 @@
+import java.awt.Color;
 
 public class Card {
 	
-	private String color;
+	private Color color;
 	private String effect;
 	private int energy;
 	private String type;
 	private String name;
 	
-	public Card(String color, String effect, int energy, String type, String name)
+	public Card(Color color, String effect, int energy, String type, String name)
 	{
 		this.color = color;
 		this.effect = effect;

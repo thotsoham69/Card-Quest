@@ -7,7 +7,16 @@ public class Enemies {
 	private String name;
 	private int healthStat;
 	private int attackStat;
-	private ArrayList<Action> rotation;
+	private int reward;
+	public Enemies(String name, int healthStat, int attackStat, int reward)
+	{
+		this.health = healthStat;
+		this.name = name;
+		this.healthStat = healthStat;
+		this.attackStat = attackStat;
+		this.reward = reward;
+			
+	}
 	
 	public int getHealth()
 	{
@@ -38,10 +47,29 @@ public class Enemies {
 		
 	}
 	
-	public int dealDamage(int damage, Hero hero)
+	public void dealDamage(int damage, Hero hero)
 	{
-		 return hero.takeDamage(damage);
+		  hero.takeDamage(damage);
 		 
+	}
+	
+	public void buff(int buff)
+	{
+		attackStat += buff;
+	}
+	
+	public void heal(int heal)
+	{
+		health += heal;
+		if (health > healthStat)
+		{
+			health = healthStat;
+		}
+	}
+	
+	public void debuff(int debuff)
+	{
+		attackStat-= debuff;
 	}
 	
 }
