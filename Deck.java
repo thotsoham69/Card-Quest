@@ -54,4 +54,19 @@ public class Deck
 		draw();
 	}
 	
+	public ArrayList<Card> getDeck()
+	{
+		return deck;
+	}
+	
+	public ArrayList<Card> getHand()
+	{
+		return hand;
+	}
+	
+	public ArrayList<Card> getDiscard()
+	{
+		return discardPile;
+	}
+	
 }

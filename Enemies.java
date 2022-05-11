@@ -20,7 +20,7 @@ public class Enemies {
 	
 	public int getHealth()
 	{
-		return health;
+		return healthStat;
 	}
 	
 	public int getAttackStat()

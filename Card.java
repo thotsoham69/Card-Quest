@@ -5,15 +5,13 @@ public class Card {
 	private Color color;
 	private String effect;
 	private int energy;
-	private String type;
 	private String name;
 	
-	public Card(Color color, String effect, int energy, String type, String name)
+	public Card(Color color, String effect, int energy, String name)
 	{
 		this.color = color;
 		this.effect = effect;
 		this.energy = energy;
-		this.type = type;
 		this.name = name;
 		
 	}
@@ -28,10 +26,6 @@ public class Card {
 		return effect;
 	}
 	
-	public String getType()
-	{
-		return type;
-	}
 	
 	public String getName()
 	{
@@ -42,5 +36,12 @@ public class Card {
 	{
 		energy = newEnergy;
 	}
+	
+	public Color getColor()
+	{
+		return color;
+	}
+
+	
 	
 }

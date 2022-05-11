@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Hero 
 {
@@ -12,6 +13,7 @@ public class Hero
 	private int energy;
 	private int DmgOT;
 	private int turnsDMG;
+	
 	public Hero(String name, Deck deck, int AttackStat, int healthStat)
 	{
 		this.healthStat = healthStat; 
@@ -51,6 +53,7 @@ public class Hero
     	
     	enemy.takeDamage(damage);
     	
+    	
     }
 
     public void gainReward(int reward)
@@ -77,7 +80,6 @@ public class Hero
 	{
 		DmgOT = damage;
 		turnsDMG = turns;
-		
 	}
 	
 	public int getHealth()
@@ -93,6 +95,11 @@ public class Hero
 	public void changeAttackStat(int change)
 	{
 		attackStat += change;
+	}
+	
+	public Deck getDeck()
+	{
+		return deck;
 	}
 
 	

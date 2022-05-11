@@ -5,10 +5,12 @@ public class BrownDragon extends Enemies
 {
     
 	private File picture;
+	private String nextMove;
 	Action action = new Action(this);
 	public BrownDragon(int health, String name, int healthStat, int attackStat, ArrayList<String> rotation, File pic, int reward)
 	{
 		super(name, healthStat, attackStat, reward);
+		health = healthStat;
 		rotation = new ArrayList<String>();
 		rotation.add("Attack");
 		rotation.add("Debuff");
@@ -24,6 +26,24 @@ public class BrownDragon extends Enemies
 		
 	}
 	
+	public void TakeAction(Hero hero)
+	{
+		switch(nextMove)
+		{
+			case "Attack":
+				hero.takeDamage(getAttackStat());
+			case "Debuff":
+				hero.debuff("debuff", -hero.getAttackStat()/6);
+			case "Heal":
+				heal(this.getHealth()/10);
+			case "splAttack":
+				specialAttack(hero);
+			case "splAttack2" :
+				specialAttack2(hero);
+			
+				
+		}
+	}
 	public void specialAttack(Hero hero)
 	{
 		action.burn(hero, (int)(Math.random()*3) + 1, this.getAttackStat()/10);
