@@ -1,6 +1,7 @@
 	
 	import java.awt.*;
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.swing.*; 
 	
@@ -39,25 +40,29 @@ public class Game extends JFrame
 	    JPanel card1 = new JPanel();
 	    card1.add(read1);
 	    card1.add(use1);
-	    
-	    
-	    Dimension d1 = new Dimension(30, 50);
+	    Dimension d1 = new Dimension(100, 100);
 	    card1.setPreferredSize(d1);
 	    card1.setBackground(hero.getDeck().getDeck().get(0).getColor());
-	    hero.getDeck().draw();
+	    ArrayList<Card> test = hero.getDeck().getDeck();
+	   
 	    
 	    JPanel card2 = new JPanel();
+	    card1.setPreferredSize(d1);
 	    card2.add(read2);
 	    card2.add(use2);
 	    card2.setBackground(hero.getDeck().getDeck().get(1).getColor());
 	    
+	    
 	    JPanel card3 = new JPanel();
+	    card1.setPreferredSize(d1);
 	    card3.add(read3);
 	    card3.add(use3);
 	    card3.setBackground(hero.getDeck().getDeck().get(2).getColor());
+	    hero.getDeck().draw();
+	    this.add(card1);
+	    this.add(card2);
+	    this.add(card3);
 	    
-	    
-	    play();
 	    
 	    this.setBounds(10,10,600,400);
 		this.setTitle("Card quest");
@@ -83,7 +88,8 @@ public class Game extends JFrame
 	
 	public static void main (String args[])
 	{
-		new Game("Volcano.jpg", "GreenDragon.png", 500, 450);
+		
+		new Game("Volcano.jpg", "GreenDragon.png", 500, 450, new Hero("Ani", 5, 20, 0), new BrownDragon("Mountain Dragon", 120, 20, 100));
 	}
 	
 }

@@ -14,20 +14,24 @@ public class Hero
 	private int DmgOT;
 	private int turnsDMG;
 	
-	public Hero(String name, Deck deck, int AttackStat, int healthStat)
+	public Hero(String name,int AttackStat, int healthStat, int gold)
 	{
 		this.healthStat = healthStat; 
 		this.name = name;
 		OriginalA = AttackStat;
 		this.attackStat = OriginalA;
-		this.deck = deck;
 		health = healthStat;
-		this.gold = 0;
+		this.gold = gold;
 		this.energy = 5;
-		
+		deck = new Deck();
+		deck.getDeck().add(new AttackCard());
+		deck.getDeck().add(new AttackCard());
+		deck.getDeck().add(new AttackCard());
 		 
 	}
 	
+	
+
 	public int takeDamage(int damage)
 	{
 		health = health - damage;
@@ -100,6 +104,11 @@ public class Hero
 	public Deck getDeck()
 	{
 		return deck;
+	}
+	
+	public int getMaxHealth()
+	{
+		return healthStat;
 	}
 
 	

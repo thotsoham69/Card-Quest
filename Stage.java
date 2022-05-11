@@ -5,6 +5,7 @@ public class Stage
 
 	private ArrayList<Enemies> enemies;
 	
+	public Stage () 
 	
 	
 	

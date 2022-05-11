@@ -18,7 +18,7 @@ public class Enemies {
 			
 	}
 	
-	public int getHealth()
+	public int getOHealth()
 	{
 		return healthStat;
 	}
@@ -70,6 +70,11 @@ public class Enemies {
 	public void debuff(int debuff)
 	{
 		attackStat-= debuff;
+	}
+	
+	public int currHealth()
+	{
+		return health;
 	}
 	
 }

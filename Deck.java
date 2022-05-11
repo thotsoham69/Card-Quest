@@ -6,14 +6,11 @@ public class Deck
 	private ArrayList<Card> discardPile;
 	private ArrayList<Card> hand;
 	
-	public Deck(ArrayList<Card> deck)
+	public Deck()
 	{
-		this.deck = deck;
-	}
-	
-	public void addCard(Card card)
-	{
-		deck.add(card);
+		this.deck = new ArrayList<Card>();
+		this.hand = new ArrayList<Card>();
+		this.discardPile = new ArrayList<Card>();
 	}
 	
 	public void draw()
@@ -23,7 +20,7 @@ public class Deck
 		{
 			for(int i = 0; i < missing; i++)
 			{
-				hand.add(deck.remove(i));
+				hand.add(deck.remove(0));
 			}
 			if(deck.size() == 0)
 			{

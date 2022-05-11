@@ -4,13 +4,14 @@ import java.util.ArrayList;
 public class BrownDragon extends Enemies
 {
     
-	private File picture;
+	
 	private String nextMove;
+	private ArrayList<String> rotation;
 	Action action = new Action(this);
-	public BrownDragon(int health, String name, int healthStat, int attackStat, ArrayList<String> rotation, File pic, int reward)
+	public BrownDragon(String name, int healthStat, int attackStat, int reward)
 	{
 		super(name, healthStat, attackStat, reward);
-		health = healthStat;
+		
 		rotation = new ArrayList<String>();
 		rotation.add("Attack");
 		rotation.add("Debuff");
@@ -22,7 +23,6 @@ public class BrownDragon extends Enemies
 		
 		
 		
-		picture = pic;
 		
 	}
 	
@@ -35,7 +35,7 @@ public class BrownDragon extends Enemies
 			case "Debuff":
 				hero.debuff("debuff", -hero.getAttackStat()/6);
 			case "Heal":
-				heal(this.getHealth()/10);
+				heal(this.getOHealth()/10);
 			case "splAttack":
 				specialAttack(hero);
 			case "splAttack2" :
