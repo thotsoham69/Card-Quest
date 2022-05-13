@@ -106,10 +106,14 @@ public class Hero
 		return deck;
 	}
 	
-	public int getMaxHealth()
+	public int getHealthStat()
 	{
 		return healthStat;
 	}
 
+	public int getEnergy()
+	{
+		return energy;
+	}
 	
 }
