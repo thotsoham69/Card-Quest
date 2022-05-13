@@ -36,12 +36,13 @@ public class Game extends JFrame
 	    JButton read1 = new JButton("Read Effect");
 	    JButton read2 = new JButton("Read Effect");
 	    JButton read3 = new JButton("Read Effect");
+	    
 	    // click to use each card in hand
 	    JButton use1 = new JButton("Use Card");
 	    JButton use2 = new JButton("Use Card");
 	    JButton use3 = new JButton("Use Card");
 	   
-	    //panel to hold all above componenets and card panels
+	    //panel to hold all above components and card panels
 	    JPanel hand = new JPanel();
 	    
 	    this.add(hand, BorderLayout.SOUTH);
@@ -90,9 +91,11 @@ public class Game extends JFrame
        
         hand.add(End);
         
-        hand.setOpaque(false);
+
         
 	    
+        
+        
 	    //regular stuff for frame
 	    this.setBounds(10,10,600,400);
 		this.setTitle("Card quest");
@@ -102,20 +105,43 @@ public class Game extends JFrame
 	}
 	public ImageIcon resizeIcon(ImageIcon icon, int width, int height)
 	{
+		
 		Image image = icon.getImage();
 	    Image newimg = image.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH);
 	    ImageIcon newImageIcon = new ImageIcon(newimg);
 	    return newImageIcon;
+	    
+	    
 	}
 	
-	
+	    
+	public void GameLoad (int level, String name, int Atk, int health, int gold)
+	{
+		switch(level)
+		{
+		 
+		case 1: 
+			Hero hero = new Hero(name, Atk, health, gold);
+			BrownDragon dragon = new BrownDragon("Mountain Dragon", 120, 20, 100);
+			
+			new Game("Fields.jpg", "Goblin.png", 500, 450, hero , dragon);
+		
+		case 2:
+			
+			
+			
+			
+		}
+		
+	}
 	
 	
 	
 	public static void main (String args[])
 	{
-		
-		new Game("Volcano.jpg", "GreenDragon.png", 500, 450, new Hero("Ani", 5, 20, 0), new BrownDragon("Mountain Dragon", 120, 20, 100));
+		Hero hero = new Hero("Ani", 5, 20, 0);
+		BrownDragon dragon = new BrownDragon("Mountain Dragon", 120, 20, 100);
+		new Game("Fields.jpg", "Goblin.png", 500, 450, hero , dragon);
 	}
 	
 }

@@ -28,6 +28,11 @@ public class BrownDragon extends Enemies
 	
 	public void TakeAction(Hero hero)
 	{
+		if(rotation.indexOf(nextMove) + 1 < rotation.size())
+			nextMove = rotation.get(rotation.indexOf(nextMove) + 1);
+		else
+			nextMove = rotation.get(0);
+
 		switch(nextMove)
 		{
 			case "Attack":
@@ -77,6 +82,10 @@ public class BrownDragon extends Enemies
 			
 	}
 	
+	public String getNextMove()
+	{
+		return nextMove;
+	}
 	
 	
 	
