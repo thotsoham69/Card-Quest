@@ -8,6 +8,9 @@ public class Enemies {
 	private int healthStat;
 	private int attackStat;
 	private int reward;
+	private int turnsDMG;
+	private int DmgOT;
+	private int shield;
 	public Enemies(String name, int healthStat, int attackStat, int reward)
 	{
 		this.health = healthStat;
@@ -18,7 +21,27 @@ public class Enemies {
 			
 	}
 	
+	public void atStart()
+	{
+		shield = 0;
+		if(DmgOT > 0 && turnsDMG > 0)
+		{
+			takeDamage(DmgOT);
+			turnsDMG--;
+			if(turnsDMG == 0)
+			{
+				DmgOT = 0;
+			}
+		}
+		
+	}
+	
 	public int getOHealth()
+	{
+		return healthStat;
+	}
+	
+	public int getHealth()
 	{
 		return healthStat;
 	}
@@ -41,6 +64,13 @@ public class Enemies {
 		return health;
 		
 	}
+	
+	public void takeDamageOverTime(int turns, int damage) 
+	{
+		DmgOT = damage;
+		turnsDMG = turns;
+	}
+	
 	
 	public void die()
 	{
@@ -77,4 +107,19 @@ public class Enemies {
 		return health;
 	}
 	
+	public int getReward()
+	{
+		return reward;
+	}
+	
+	public void shield(int amt)
+	{
+		shield += amt;
+		
+	}
+	
+	public int getShield()
+	{
+		return shield;
+	}
 }
