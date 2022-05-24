@@ -1,0 +1,23 @@
+import java.awt.Color;
+
+public class ShieldCard extends Card
+{
+
+	public ShieldCard(Color color, String effect, int energy, String name) {
+		super(Color.BLUE, "This Card puts on a shield that is 25% of the Hero's healthstat", 1, "Shield");
+		// TODO Auto-generated constructor stub
+	}
+	
+	public void use(Hero hero) 
+	{
+		int amt = (int)(hero.getHealthStat()*0.25);
+		hero.shield(amt);
+		
+		
+	}
+	
+	
+	
+	
+	
+}
