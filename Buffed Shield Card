@@ -11,7 +11,7 @@ public class BuffedShieldCard extends Card
 	public void use(Hero hero)
 	{
 		double r = (Math.random()*21) + 30;
-		double amt = (21.0/100.0) * hero.getHealthStat();
+		double amt = (r/100.0) * hero.getHealthStat();
 		hero.shield((int)(amt));
 		
 	}
