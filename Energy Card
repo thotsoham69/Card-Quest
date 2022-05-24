@@ -1,0 +1,23 @@
+import java.awt.Color;
+
+public class EnergyCard extends Card
+{
+	public EnergyCard()
+	{
+		super(Color.BLUE, "This card takes 1 energy but gives back 3", 1, "Energy");
+		
+		
+		
+	}
+	public void use(Hero hero)
+	{
+		int energy = 0;
+		energy = hero.getEnergy() + 3;
+		hero.setEnergy(energy);
+		
+		
+		
+	}
+	
+	
+}
