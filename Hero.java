@@ -172,6 +172,11 @@ public class Hero
 		health = healthStat;
 	}
 	
+	public void setEnergy(int nrg)
+	{
+		energy += nrg;
+	}
+	
 	public String getName()
 	{
 		return name;
@@ -191,4 +196,13 @@ public class Hero
 		returner.addAll(deck.getHand());
 		return returner;
 	}
+
+
+
+	public int getShield() 
+	{
+		
+		return shield;
+	}
+
 }

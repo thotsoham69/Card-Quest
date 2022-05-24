@@ -43,7 +43,7 @@ public class Enemies {
 	
 	public int getHealth()
 	{
-		return healthStat;
+		return health;
 	}
 	
 	public int getAttackStat()

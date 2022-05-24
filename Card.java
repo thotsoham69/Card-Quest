@@ -16,7 +16,7 @@ public class Card {
 		
 	}
 	
-	public void use()
+	public void use(Hero hero, Enemies enemy)
 	{
 		
 	}
@@ -35,6 +35,11 @@ public class Card {
 	public void setEnergy(int newEnergy)
 	{
 		energy = newEnergy;
+	}
+	
+	public int getEnergy()
+	{
+		return energy;
 	}
 	
 	public Color getColor()

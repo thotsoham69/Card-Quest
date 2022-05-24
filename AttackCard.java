@@ -8,7 +8,7 @@ public class AttackCard extends Card
 
 	public AttackCard() 
 	{
-		super(Color.RED, "The enemy takes damage equal to your current Attack Stat", 1, "Attack");
+		super(Color.RED, "The enemy takes damage equal" + "\n" + "to your current Attack Stat", 1, "Attack");
 		
 		
 	}

@@ -71,13 +71,13 @@ public class Game extends JFrame
 	    JPanel card2 = new JPanel();
 	    card2.add(read2);
 	    card2.add(use2);
-	    card2.setBackground(hero.getDeck().getDeck().get(0).getColor());
+	    card2.setBackground(hero.getDeck().getDeck().get(1).getColor());
 	    
 	    
 	    JPanel card3 = new JPanel();
 	    card3.add(read3);
 	    card3.add(use3);
-	    card3.setBackground(hero.getDeck().getDeck().get(0).getColor());
+	    card3.setBackground(hero.getDeck().getDeck().get(2).getColor());
 	    hero.getDeck().draw();
 	   
 	  //End- ends turn, Energy- displays available energy, Deck- displays cards in deck, Discard - displays cards in discard pile
@@ -85,6 +85,11 @@ public class Game extends JFrame
 	    JLabel Energy = new JLabel("Energy: "+ hero.getEnergy());
 	    JLabel Deck = new JLabel("Deck: " + hero.getDeck().getDeck().size());
 	    JLabel Discard = new JLabel("Discarded: "+ hero.getDeck().getDiscard().size());
+	    
+	    
+	    
+	    
+	    
 	    
 	    //adding components in order from left to right to the Hand Panel
 	    hand.setPreferredSize(new Dimension(300, 80));
@@ -124,15 +129,28 @@ public class Game extends JFrame
 	    
         this.setJMenuBar(menuBar);
         
-        JPanel healthPanel = new JPanel();
-        healthPanel.setLayout(new BorderLayout());
-        healthPanel.setOpaque(false);
-        this.add(healthPanel, BorderLayout.CENTER);
+        JPanel healthPanel1 = new JPanel();
+        healthPanel1.setLayout(new BorderLayout());
+        healthPanel1.setOpaque(false);
+        this.add(healthPanel1, BorderLayout.WEST);
+        
+        JPanel healthPanel2 = new JPanel();
+        healthPanel2.setLayout(new BorderLayout());
+        healthPanel2.setOpaque(false);
+        this.add(healthPanel2, BorderLayout.EAST);
         
         JLabel healthEnemy = new JLabel(enemy.getHealth() + "/" + enemy.getHealth());
+        JLabel healthHero = new JLabel(hero.getHealth() + "/" + hero.getHealthStat());
         
-        healthPanel.add(healthEnemy, BorderLayout.NORTH);
+        healthPanel2.add(healthEnemy, BorderLayout.NORTH);
         healthEnemy.setHorizontalAlignment(healthEnemy.RIGHT);
+        healthEnemy.setFont(new Font("Serif", Font.PLAIN, 100));
+        healthEnemy.setForeground(Color.RED);
+        
+        healthPanel1.add(healthHero, BorderLayout.SOUTH);
+        healthHero.setHorizontalAlignment(healthEnemy.LEFT);
+        healthHero.setFont(new Font("Serif", Font.PLAIN, 100));
+        healthHero.setForeground(Color.GREEN);
         
         //Actions:
         
@@ -199,6 +217,45 @@ public class Game extends JFrame
 
     	});
         
+      //hand buttons Action listeners:
+	    read1.addActionListener(new ActionListener()
+    	{
+    		public void actionPerformed(ActionEvent e)
+    		{
+    			JOptionPane.showMessageDialog(null, "Name: " + hero.getDeck().getHand().get(0).getName() + "\n" + "Effect: " + hero.getDeck().getHand().get(0).getEffect());
+    			
+    		}
+
+    	});
+	    
+	    use1.addActionListener(new ActionListener()
+    	{
+    		public void actionPerformed(ActionEvent e)
+    		{
+    			if(hero.getEnergy() < hero.getDeck().getHand().get(0).getEnergy())
+    			{
+    				JOptionPane.showMessageDialog(null, "not enough energy to use this card");
+    			}
+    			
+    			else
+    			{
+    				hero.setEnergy(hero.getDeck().getHand().get(0).getEnergy() * -1);
+    				hero.getDeck().getHand().get(0).use(hero, enemy);
+    				hero.getDeck().getDiscard().add(hero.getDeck().getHand().remove(0));
+    				hero.getDeck().draw();
+    				card1.setBackground(hero.getDeck().getHand().get(0).getColor());
+    				card2.setBackground(hero.getDeck().getHand().get(1).getColor());
+    				card3.setBackground(hero.getDeck().getHand().get(2).getColor());
+    				healthEnemy.setText(enemy.getHealth() + "/" + enemy.getOHealth());
+    				healthHero.setText(hero.getHealth() + "/" + hero.getHealthStat());
+    				Energy.setText("Energy: "+ hero.getEnergy());
+    				
+    				
+    			}
+    		}
+
+    	});
+	    
         
 	    //regular stuff for frame
 		this.setTitle("Card quest");

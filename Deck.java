@@ -43,9 +43,9 @@ public class Deck
 		}
 	}
 	
-	public void use(Card card)
+	public void use(Card card, Hero hero, Enemies enemy)
 	{
-		card.use();
+		card.use(hero, enemy);
 		discardPile.add(card);
 		hand.remove(card);
 		draw();
