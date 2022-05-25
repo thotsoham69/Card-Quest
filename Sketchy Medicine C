@@ -1,5 +1,5 @@
 import java.awt.Color;
-public class BuffedHealCard extends Card{
+public class SketchyMedicineC extends Card{
 	public BuffedHealCard(Color color, String effect, int  energy, String name) {
 		super(Color.YELLOW, "50% chance to fully heal, otherwise you will take damage equal to 15% of your current health", 2, "Sketchy Medicine"); 
 		
