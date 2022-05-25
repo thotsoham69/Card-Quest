@@ -1,0 +1,21 @@
+import java.awt.Color;
+
+public class LegendaryAttack extends Card
+{
+	public LegendaryAttack()  
+	{ 
+	super(Color.ORANGE, "This Attack does twice the damage of the normal attackstat", 5, "Legendary Attack"); 
+	 
+	 
+	} 
+	
+	public void use(Hero hero, Enemies enemy)
+	{
+		enemy.takeDamage(hero.getAttackStat()*2); 
+		
+		
+	}
+	
+	
+	
+}
