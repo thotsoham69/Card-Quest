@@ -4,7 +4,7 @@ public class BuffedEnergyCard extends Card
 {
 	public BuffedEnergyCard(Color color, String effect, int energy, String name)
 	{
-		super(Color.BLUE, "This card takes 2 energy and gives back 4 energy but also has a 30% probability of giving back 5 energy. This card also does damage of 50% of the Heros AttackStat", 2, "Buffed Energy");
+		super(Color.BLUE, "This card takes 2 energy and gives back 2 energy but also has a 30% chance of giving back 3 energy. This card also deals damage equal to 50% of the Hero's AttackStat", 2, "Buffed Energy");
 		
 	}
 	
@@ -12,19 +12,16 @@ public class BuffedEnergyCard extends Card
 	{
 		int r = (int) ((Math.random()*100) + 1);
 		int energy = 0;
-		if(r < 30)
+		if(r <= 30)
 		{
-			energy = hero.getEnergy() + 5;			
+			energy = hero.getEnergy() + 3;			
 		}
 		else
 		{
-			energy = hero.getEnergy() + 4;
+			energy = hero.getEnergy() + 2;
 			
 		}
-		enemy.takeDamage((int)(hero.getAttackStat()*0.5)); 
-		
-		
-		
+		enemy.takeDamage((int)(hero.getAttackStat()*0.5));
 		
 		
 		
