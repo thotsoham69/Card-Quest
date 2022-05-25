@@ -1,8 +1,8 @@
 import java.awt.Color;
 
-public class BuffedEnergyCard extends Card
+public class Momentum extends Card
 {
-	public BuffedEnergyCard()
+	public Momentum()
 	{
 		super(Color.BLUE, "This card takes 2 energy and gives back 2 energy but also has a 30% chance of giving back 3 energy. This card also deals damage equal to 50% of the Hero's AttackStat", 2, "Buffed Energy");
 		
