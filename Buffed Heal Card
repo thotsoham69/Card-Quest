@@ -1,21 +1,20 @@
 import java.awt.Color;
 public class BuffedHealCard extends Card{
 	public BuffedHealCard(Color color, String effect, int  energy, String name) {
-		super(Color.YELLOW, "Using this card gives you a 30% chance tot heal by 50% more than the Hero's normal healing amount, otherwise it will decrease health by 15%", 2, "Buffed Heal");
+		super(Color.YELLOW, "50% chance to fully heal, otherwise you will take damage equal to 15% of your current health", 2, "Sketchy Medicine"); 
 		
 		
 	}
 	
 	public void use(Hero hero) {
 		double r = (double)(Math.random()*100)+1;
-		if(r <=  30 && (int)(hero.getHealth()*1.5) <= (int)(hero.getHealthStat())) {
-			hero.setHealth((int)(hero.getHealth()*1.5));
+		if(r <=  50) 
+		{
+			hero.setHealth((int)(hero.getHealthStat * 0.5));
 		}
-		else if((int)(hero.getHealth()*1.5) > (int)(hero.getHealthStat()) && r <= 30) {
-			hero.setHealth(hero.getHealthStat());
-		}
+		
 		else {
-			hero.setHealth((int)(hero.getHealth()*0.85));
+			hero.setHealth(-(int)(hero.getHealthStat()*0.15));
 		}
 	}
 	
