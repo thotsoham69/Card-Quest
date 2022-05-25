@@ -4,7 +4,7 @@ public class Momentum extends Card
 {
 	public Momentum()
 	{
-		super(Color.BLUE, "This card takes 2 energy and gives back 2 energy but also has a 30% chance of giving back 3 energy. This card also deals damage equal to 50% of the Hero's AttackStat", 2, "Buffed Energy");
+		super(Color.BLUE, "This card takes 2 energy and gives back 2 energy but also has a 30% chance of giving back 3 energy. This card also deals damage equal to 50% of the Hero's AttackStat", 2, "Momentum");
 		
 	}
 	
