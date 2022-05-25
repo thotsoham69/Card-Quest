@@ -1,0 +1,19 @@
+import java.awt.Color;
+
+public class BuffedShieldCard extends Card
+{
+	public BuffedShieldCard()
+	{
+		super(Color.BLUE, "This Card puts on a shield that ranges between 30%-50% of the Hero's healthstat", 2, "Buffed Shield");
+		
+		
+	}
+	public void use(Hero hero)
+	{
+		double r = (Math.random()*21) + 30;
+		double amt = (r/100.0) * hero.getHealthStat();
+		hero.shield((int)(amt));
+		
+	}
+	
+}
