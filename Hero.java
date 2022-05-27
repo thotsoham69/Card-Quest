@@ -29,6 +29,7 @@ public class Hero
 		deck.getDeck().add(new AttackCard());
 		deck.getDeck().add(new AttackCard());
 		deck.getDeck().add(new AttackCard());
+		deck.getDeck().add(new ShieldCard());
 		 
 	}
 	
@@ -73,13 +74,6 @@ public class Hero
 		
 	}
 	
-    public void dealDamage(int damage, Enemies enemy)
-    {
-    	
-    	enemy.takeDamage(damage);
-    	
-    	
-    }
 
     public void gainReward(int reward)
     {
@@ -87,15 +81,7 @@ public class Hero
     	gold += reward;
     	
     }
-    
-    public void debuff(String debuff, int de)
-    {
-    	switch (debuff)
-    	{
-    	case "lower" :
-    		attackStat += de;
-    	}
-    }
+
     
 	public void die() 
 	{
@@ -205,4 +191,12 @@ public class Hero
 		return shield;
 	}
 
+	public void setHealth(int amt)
+	{
+		health += amt;
+		if(health > healthStat)
+		{
+			health = healthStat;
+		}
+	}
 }
