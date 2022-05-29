@@ -1,0 +1,24 @@
+import java.awt.Color;
+
+public class ChugJugCard extends Card
+{
+	public ChugJugCard()
+	{
+	super(Color.BLUE, "This card heals you back to full health along with shield that is equivalent to your HealthStat and gives you 5 energy", 4, "Chug Jug");	
+		
+		
+	}
+	
+	public void use(Hero hero)
+	{
+		hero.setHealth(hero.getHealthStat());
+		int energy = hero.getEnergy() + 5;
+		hero.setEnergy(energy);
+		hero.setShield(hero.getHealthStat());
+		
+		
+	}
+	
+	
+	
+}
