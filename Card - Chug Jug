@@ -4,7 +4,7 @@ public class ChugJugCard extends Card
 {
 	public ChugJugCard()
 	{
-	super(Color.BLUE, "This card heals you back to full health along with shield that is equivalent to your HealthStat and gives you 5 energy", 4, "Chug Jug");	
+	super(Color.BLUE, "This card heals you back to full health along with shield that is equivalent to your HealthStat", 4, "Chug Jug");	
 		
 		
 	}
@@ -12,9 +12,7 @@ public class ChugJugCard extends Card
 	public void use(Hero hero)
 	{
 		hero.setHealth(hero.getHealthStat());
-		int energy = hero.getEnergy() + 5;
-		hero.setEnergy(energy);
-		hero.setShield(hero.getHealthStat());
+		hero.shield(hero.getHealthStat());
 		
 		
 	}
