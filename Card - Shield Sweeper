@@ -1,0 +1,17 @@
+import java.awt.Color;
+
+public class ShieldSweeperCard extends Card
+{
+	public ShieldSweeperCard()
+	{
+		super(Color.BLUE, "This card removes all the shield from the enemy", 3, "Shield Sweeper");
+		
+		
+		
+	}
+	
+	public void use(Enemies enemy)
+	{
+		enemy.setShield(0);
+	}
+}
