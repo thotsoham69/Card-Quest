@@ -1,37 +1,44 @@
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class Goblin extends Enemies
 {
  
 	private String nextMove;
 	private ArrayList<String> rotation;
-	Action action = new Action(this);
-	public Goblin(String name, int healthStat, int attackStat, int reward) {
-		super(name, healthStat, attackStat, reward);
+	public Goblin(int healthStat, int attackStat, int reward) {
+		super(healthStat, attackStat, reward);
 		rotation = new ArrayList<String>();
 		rotation.add("Attack");
 		rotation.add("Attack");
+		rotation.add("Heal");
+		rotation.add("Debuff");
 		nextMove = rotation.get(0);
 	}
 	
 	public void TakeAction(Hero hero)
 	{
-		if(rotation.indexOf(nextMove) + 1 < rotation.size())
-			nextMove = rotation.get(rotation.indexOf(nextMove) + 1);
-		else
-			nextMove = rotation.get(0);
-		
 		
 		switch(nextMove)
 		{
 			case "Attack":
+				int att = getAttackStat();
 				hero.takeDamage(getAttackStat());
+				JOptionPane.showConfirmDialog(null, "the goblin attacked for " + att + " damage!");
+				break;
 			case "Debuff":
-				hero.debuff("debuff", -hero.getAttackStat()/6);
+				int deb = -hero.getAttackStat()/6;
+				hero.changeAttackStat(-hero.getAttackStat()/6);
+				JOptionPane.showConfirmDialog(null, "the goblin lowered your attack by " + deb + " points");
+				break;
 			case "Heal":
 				heal(this.getOHealth()/10);
-					
+				JOptionPane.showConfirmDialog(null, "the goblin healed itself by  " + this.getOHealth()/10 + " health");
+				break;
 		}
+		
+		nextMove = rotation.get((int)(Math.random() * rotation.size()));
 	}
 	
 	public String getNextMove()

@@ -4,17 +4,18 @@ public class Enemies {
 
 
 	private int health;
-	private String name;
 	private int healthStat;
 	private int attackStat;
 	private int reward;
 	private int turnsDMG;
 	private int DmgOT;
 	private int shield;
-	public Enemies(String name, int healthStat, int attackStat, int reward)
+	private boolean isdead;
+	
+	public Enemies(int healthStat, int attackStat, int reward)
 	{
+		this.isdead = false;
 		this.health = healthStat;
-		this.name = name;
 		this.healthStat = healthStat;
 		this.attackStat = attackStat;
 		this.reward = reward;
@@ -122,4 +123,35 @@ public class Enemies {
 	{
 		return shield;
 	}
+	
+	public void TakeAction(Hero hero)
+	{
+		
+	}
+	
+	public String getNextMove()
+	{
+		return null;
+	}
+	
+	public void setDeath()
+	{
+		isdead = true;
+	}
+	
+	public boolean isDead()
+	{
+		return isdead;
+	}
+
+	public void setHealth(int amt)
+	{
+		health += amt;
+		if(health > healthStat)
+		{
+			health = healthStat;
+		}
+	}
+	
+	
 }

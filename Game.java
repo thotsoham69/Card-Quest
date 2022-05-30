@@ -7,22 +7,24 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.*; 
 	
 
 public class Game extends JFrame 
 {
-	private File file = new File("SaveFile.txt");
+	
 	private Hero hero;
 	private Enemies enemy;
 	private int level;
+	private Stage stage = new Stage(level);
 	@SuppressWarnings("serial")
-	public Game(String back, String MonsterPIC, int MonsterWidth, int MonsterHeight, Hero hero, Enemies enemy) throws IOException
+	public Game(String back, String MonsterPIC, int MonsterWidth, int MonsterHeight, Hero hero, Enemies enemy, int level) throws IOException
 	{
 		
 		//starts game with full screen
-		
+		this.level = level;
 		this.hero = hero;
 		this.enemy = enemy;
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -86,8 +88,8 @@ public class Game extends JFrame
 	    JLabel Deck = new JLabel("Deck: " + hero.getDeck().getDeck().size());
 	    JLabel Discard = new JLabel("Discarded: "+ hero.getDeck().getDiscard().size());
 	    
-	    
-	    
+	  
+	   
 	    
 	    
 	    
@@ -159,7 +161,7 @@ public class Game extends JFrame
     	{
     		public void actionPerformed(ActionEvent e)
     		{
-    			JOptionPane.showMessageDialog(null, "Attack: " + hero.getAttackStat() + "\n" + "Health: " + hero.getHealth() + "/" + hero.getHealthStat() + "\n" + "Gold: " + hero.getGold() + "\n" + "Reward: " + enemy.getReward());
+    			JOptionPane.showMessageDialog(null, "Attack: " + hero.getAttackStat() + "\n" + "Shield: " + hero.getShield() + "\n" + "Gold: " + hero.getGold() + "\n" + "Reward: " + enemy.getReward());
     			
     		}
 
@@ -170,7 +172,7 @@ public class Game extends JFrame
        		public void actionPerformed(ActionEvent e)
        		{
        			try {
-					save(hero, level);
+					Stage.save(hero, level);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -185,7 +187,7 @@ public class Game extends JFrame
        		public void actionPerformed(ActionEvent e)
        		{
        			try {
-					save(hero, level);
+					Stage.save(hero, level);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -204,7 +206,7 @@ public class Game extends JFrame
     			if(confirm == 0)
     			{
     				try {
-						save(hero, level);
+						Stage.save(hero, level);
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -243,6 +245,8 @@ public class Game extends JFrame
     				hero.getDeck().getHand().get(0).use(hero, enemy);
     				hero.getDeck().getDiscard().add(hero.getDeck().getHand().remove(0));
     				hero.getDeck().draw();
+    				Deck.setText("Deck: "+ hero.getDeck().getDeck().size());
+    				Discard.setText("Discarded: "+ hero.getDeck().getDiscard().size());
     				card1.setBackground(hero.getDeck().getHand().get(0).getColor());
     				card2.setBackground(hero.getDeck().getHand().get(1).getColor());
     				card3.setBackground(hero.getDeck().getHand().get(2).getColor());
@@ -252,6 +256,132 @@ public class Game extends JFrame
     				
     				
     			}
+    		}
+
+    	});
+	    
+	    read2.addActionListener(new ActionListener()
+    	{
+    		public void actionPerformed(ActionEvent e)
+    		{
+    			JOptionPane.showMessageDialog(null, "Name: " + hero.getDeck().getHand().get(1).getName() + "\n" + "Effect: " + hero.getDeck().getHand().get(1).getEffect());
+    			
+    		}
+
+    	});
+	    
+	    use2.addActionListener(new ActionListener()
+    	{
+    		public void actionPerformed(ActionEvent e)
+    		{
+    			if(hero.getEnergy() < hero.getDeck().getHand().get(1).getEnergy())
+    			{
+    				JOptionPane.showMessageDialog(null, "not enough energy to use this card");
+    			}
+    			
+    			else
+    			{
+    				hero.setEnergy(hero.getDeck().getHand().get(1).getEnergy() * -1);
+    				hero.getDeck().getHand().get(1).use(hero, enemy);
+    				hero.getDeck().getDiscard().add(hero.getDeck().getHand().remove(1));
+    				hero.getDeck().draw();
+    				Deck.setText("Deck: "+ hero.getDeck().getDeck().size());
+    				Discard.setText("Discarded: "+ hero.getDeck().getDiscard().size());
+    				card1.setBackground(hero.getDeck().getHand().get(0).getColor());
+    				card2.setBackground(hero.getDeck().getHand().get(1).getColor());
+    				card3.setBackground(hero.getDeck().getHand().get(2).getColor());
+    				healthEnemy.setText(enemy.getHealth() + "/" + enemy.getOHealth());
+    				healthHero.setText(hero.getHealth() + "/" + hero.getHealthStat());
+    				Energy.setText("Energy: "+ hero.getEnergy());
+    				
+    				
+    			}
+    		}
+
+    	});
+	    
+	    read3.addActionListener(new ActionListener()
+    	{
+    		public void actionPerformed(ActionEvent e)
+    		{
+    			JOptionPane.showMessageDialog(null, "Name: " + hero.getDeck().getHand().get(2).getName() + "\n" + "Effect: " + hero.getDeck().getHand().get(2).getEffect());
+    			
+    		}
+
+    	});
+	    
+	    use3.addActionListener(new ActionListener()
+    	{
+    		public void actionPerformed(ActionEvent e)
+    		{
+    			if(hero.getEnergy() < hero.getDeck().getHand().get(2).getEnergy())
+    			{
+    				JOptionPane.showMessageDialog(null, "not enough energy to use this card");
+    			}
+    			
+    			else
+    			{
+    				hero.setEnergy(hero.getDeck().getHand().get(2).getEnergy() * -1);
+    				hero.getDeck().getHand().get(2).use(hero, enemy);
+    				hero.getDeck().getDiscard().add(hero.getDeck().getHand().remove(2));
+    				hero.getDeck().draw();
+    				Deck.setText("Deck: "+ hero.getDeck().getDeck().size());
+    				Discard.setText("Discarded: "+ hero.getDeck().getDiscard().size());
+    				card1.setBackground(hero.getDeck().getHand().get(0).getColor());
+    				card2.setBackground(hero.getDeck().getHand().get(1).getColor());
+    				card3.setBackground(hero.getDeck().getHand().get(2).getColor());
+    				healthEnemy.setText(enemy.getHealth() + "/" + enemy.getOHealth());
+    				healthHero.setText(hero.getHealth() + "/" + hero.getHealthStat());
+    				Energy.setText("Energy: "+ hero.getEnergy());
+    				
+    				
+    			}
+    		}
+
+    	});
+	    
+	      End.addActionListener(new ActionListener()
+    	{
+    		public void actionPerformed(ActionEvent e)
+    		{
+    			 End.setEnabled(false);
+    			 use1.setEnabled(false);
+    			 read1.setEnabled(false);
+    			 use2.setEnabled(false);
+    			 read2.setEnabled(false);
+    			 use3.setEnabled(false);
+    			 read3.setEnabled(false);
+    		
+    			 if(enemy.isDead())
+    			 {
+    				 JOptionPane.showInternalConfirmDialog(null, "you defeated this level and gained" + enemy.getReward() + " coins, would you like to go to the shop?", "Win", JOptionPane.YES_NO_OPTION);
+    			 }
+    			 enemy.atStart();
+    			
+    			 
+    			 enemy.TakeAction(hero);
+    			 
+    			 Deck.setText("Deck: "+ hero.getDeck().getDeck().size());
+    			 
+ 				Discard.setText("Discarded: "+ hero.getDeck().getDiscard().size());
+ 				card1.setBackground(hero.getDeck().getHand().get(0).getColor());
+ 				card2.setBackground(hero.getDeck().getHand().get(1).getColor());
+ 				card3.setBackground(hero.getDeck().getHand().get(2).getColor());
+ 				healthEnemy.setText(enemy.getHealth() + "/" + enemy.getOHealth());
+ 				healthHero.setText(hero.getHealth() + "/" + hero.getHealthStat());
+ 				Energy.setText("Energy: "+ hero.getEnergy());
+    			 
+    			hero.atStart();
+    			
+    			 End.setEnabled(true);
+    			 use1.setEnabled(true);
+    			 read1.setEnabled(true);
+    			 use2.setEnabled(true);
+    			 read2.setEnabled(true);
+    			 use3.setEnabled(true);
+    			 read3.setEnabled(true);
+    			 
+    			 
     		}
 
     	});
@@ -277,57 +407,28 @@ public class Game extends JFrame
 	}
 	
 	    
-	public void save(Hero hero, int level) throws IOException
-	{
-		//creates Save file if not already created
-				FileNotFoundException FileNotFound = new FileNotFoundException();
-				
-				try
-				{
-					 boolean exists = file.exists();
-					 if(!exists)
-					 {
-						 throw FileNotFound ; 
-					 }
-				}
-				
-				catch(Exception FileNotFoundException)
-				{
-					file.createNewFile();
-				}
-				
-		PrintWriter writer = new PrintWriter("SaveFile.txt"); 
-		 writer.println(hero.getName() + "/" + hero.getHealthStat() + "/" + hero.getOAttack() + "/" + hero.getGold() + "/");
-		 
-		for(int i = hero.getFullDeckList().size() - 1 ; i >= 0 ; i--)
-		{
-			
-			writer.print(hero.getFullDeckList().get(i) + "/");
-			
-		}
-		
-	}
 	
-	public void GameLoad (int level, String name, int Atk, int health, int gold) throws IOException
-	{
-		switch(level)
-		{
-		 
-		case 1: 
-			Hero hero = new Hero(name, Atk, health, gold);
-			Goblin goblin = new Goblin("Mountain Dragon", 120, 20, 100);
-			level = 1;
-			new Game("Fields.jpg", "Goblin.png", 500, 450, hero , goblin);
-		
-		case 2:
-			
-			level = 2;
-			
-			
-			
-		}
-		
-	}
+	
+//	public void GameLoad (int level, String name, int Atk, int health, int gold) throws IOException
+//	{
+//		switch(level)
+//		{
+//		 
+//		case 1: 
+//			Hero hero = new Hero(name, Atk, health, gold);
+//			Goblin goblin = new Goblin( 120, 20, 100);
+//			level = 1;
+//			new Game("Fields.jpg", "Goblin.png", 500, 450, hero , goblin);
+//		
+//		case 2:
+//			
+//			level = 2;
+//			
+//			
+//			
+//		}
+//		
+//	}
 	
 	
 	
@@ -346,8 +447,8 @@ public class Game extends JFrame
 	public static void main (String args[]) throws IOException
 	{
 		Hero hero = new Hero("Ani", 5, 20, 0);
-		BrownDragon dragon = new BrownDragon("Mountain Dragon", 120, 20, 100);
-		new Game("Fields.jpg", "GreenDragon.png", 500, 450, hero , dragon);
+		BrownDragon dragon = new BrownDragon(120, 20, 100);
+		new Game("Fields.jpg", "GreenDragon.png", 500, 450, hero , dragon, 2);
 	}
 	
 }

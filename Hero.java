@@ -26,10 +26,6 @@ public class Hero
 		this.energy = 5;
 		shield = 0;
 		deck = new Deck();
-		deck.getDeck().add(new AttackCard());
-		deck.getDeck().add(new AttackCard());
-		deck.getDeck().add(new AttackCard());
-		deck.getDeck().add(new ShieldCard());
 		 
 	}
 	
