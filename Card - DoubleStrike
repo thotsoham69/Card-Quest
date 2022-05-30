@@ -4,7 +4,7 @@ public class DoubleAttackCard extends Card
 {
 	public DoubleAttackCard()
 	{
-		super(Color.RED, "This card does double the damage of your AttackStat to the enemy  ", 2, "DoubleAttackCard");
+		super(Color.RED, "This card does double the damage of your AttackStat to the enemy  ", 2, "Double Strike");
 		
 		
 	}
