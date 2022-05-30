@@ -1,0 +1,19 @@
+import java.awt.Color;
+
+public class Spadille extends Card {
+
+	public Spadille()
+	{
+		super(Color.RED, "This card automatically kills your opponent with one strike but also takes 7 energy to execute", 7, "Spadille");
+	}
+	
+	public void use(Hero hero, Enemies enemy)
+	{
+		enemy.takeDamage(enemy.getOHealth());
+		
+		
+		
+	}
+	
+	
+}
