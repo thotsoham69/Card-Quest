@@ -6,27 +6,14 @@ public class MeditationCard extends Card
 {
 	public MeditationCard()
 	{
-		super(Color.GREEN, "This card increases your health by 10% while also giving you intel on the enemy's next move", 2, "Meditation");
+		super(Color.GREEN, "This card increases your health by 10% and predicts the enemy's next move", 2, "Meditation");
 	}
 	
 	
 	public void use(Hero hero, Enemies enemy) 
 	{
 		JOptionPane.showMessageDialogue(null, "The enemy's next move is " + enemy.getNextMove());
-		
-		int health = (int)(hero.getHealth()*1.1);
-		if(health > hero.getHealth())
-		{
-			health = hero.getHealthStat();
-			
-			
-		}
-		hero.setHealth(health);
-		
-		
-		
-	
-		
+		hero.setHealth((int)(hero.getOHealth * 0.1));	
 		
 	}
 	
