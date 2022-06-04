@@ -66,4 +66,8 @@ public class Deck
 		return discardPile;
 	}
 	
+	public void addCard(Card card)
+	{
+		deck.add(card);
+	}
 }

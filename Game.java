@@ -17,14 +17,11 @@ public class Game extends JFrame
 	
 	private Hero hero;
 	private Enemies enemy;
-	private int level;
-	private Stage stage = new Stage(level);
-	@SuppressWarnings("serial")
-	public Game(String back, String MonsterPIC, int MonsterWidth, int MonsterHeight, Hero hero, Enemies enemy, int level) throws IOException
+	public Game(String back, String MonsterPIC, int MonsterWidth, int MonsterHeight, Hero hero, Enemies enemy) throws IOException
 	{
 		
 		//starts game with full screen
-		this.level = level;
+	
 		this.hero = hero;
 		this.enemy = enemy;
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -172,7 +169,7 @@ public class Game extends JFrame
        		public void actionPerformed(ActionEvent e)
        		{
        			try {
-					Stage.save(hero, level);
+					Stage.save(hero);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -187,7 +184,7 @@ public class Game extends JFrame
        		public void actionPerformed(ActionEvent e)
        		{
        			try {
-					Stage.save(hero, level);
+					Stage.save(hero);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -206,7 +203,7 @@ public class Game extends JFrame
     			if(confirm == 0)
     			{
     				try {
-						Stage.save(hero, level);
+						Stage.save(hero);
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -448,7 +445,7 @@ public class Game extends JFrame
 	{
 		Hero hero = new Hero("Ani", 5, 20, 0);
 		BrownDragon dragon = new BrownDragon(120, 20, 100);
-		new Game("Fields.jpg", "GreenDragon.png", 500, 450, hero , dragon, 2);
+		new Game("Fields.jpg", "GreenDragon.png", 500, 450, hero , dragon);
 	}
 	
 }
