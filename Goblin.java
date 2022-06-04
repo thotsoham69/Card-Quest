@@ -25,16 +25,16 @@ public class Goblin extends Enemies
 			case "Attack":
 				int att = getAttackStat();
 				hero.takeDamage(getAttackStat());
-				JOptionPane.showConfirmDialog(null, "the goblin attacked for " + att + " damage!");
+				JOptionPane.showConfirmDialog(null, "the goblin attacked for " + att + " damage!", "Attacked!", JOptionPane.PLAIN_MESSAGE);
 				break;
 			case "Debuff":
 				int deb = -hero.getAttackStat()/6;
 				hero.changeAttackStat(-hero.getAttackStat()/6);
-				JOptionPane.showConfirmDialog(null, "the goblin lowered your attack by " + deb + " points");
+				JOptionPane.showConfirmDialog(null, "the goblin lowered your attack by " + deb + " points", "Lowered Attack", JOptionPane.PLAIN_MESSAGE);
 				break;
 			case "Heal":
 				heal(this.getOHealth()/10);
-				JOptionPane.showConfirmDialog(null, "the goblin healed itself by  " + this.getOHealth()/10 + " health");
+				JOptionPane.showConfirmDialog(null, "the goblin healed itself by  " + this.getOHealth()/10 + " health", "Healed", JOptionPane.PLAIN_MESSAGE);
 				break;
 		}
 		

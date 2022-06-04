@@ -1,9 +1,11 @@
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -15,54 +17,72 @@ public class LevelSelect extends JFrame
 	{
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setResizable(false);
-		this.setLayout(new GridBagLayout());
+		this.setLayout(new GridLayout(4, 4));
 		GridBagConstraints gbc = new GridBagConstraints();
+		ImageIcon fields = new ImageIcon("Fields.jpg");
+		ImageIcon caves = new ImageIcon("Caves.jpg");
+		ImageIcon forest = new ImageIcon("Forest.jpg");
+		ImageIcon desert = new ImageIcon("Desert.jpg");
+		ImageIcon beach =  new ImageIcon("Beach.jpg");
+		ImageIcon island = new ImageIcon("Island.jpg");
+		ImageIcon canyon = new ImageIcon("Canyon.jpg");
+		ImageIcon mountain = new ImageIcon("Mountains.jpg");
+		ImageIcon frost = new ImageIcon("Frost.jpg");
+		ImageIcon volc = new ImageIcon("Volcano.jpg");
 		
-		JButton level1 = new JButton("1");
-		JButton spacer1 = new JButton("             ");
-		spacer1.setVisible(false);
-	    JButton level2 = new JButton("2");
-	    JButton spacer2 = new JButton("             ");
-		spacer2.setVisible(false);
-	    JButton level3 = new JButton("3");
-	    JButton spacer3 = new JButton("             ");
-		spacer3.setVisible(false);
-	    JButton level4 = new JButton("4");
-	    JButton spacer4 = new JButton("             ");
-		spacer4.setVisible(false);
-	    JButton level5 = new JButton("5");
-	    JButton level6 = new JButton("6");
-	    JButton spacer5 = new JButton("             ");
-		spacer5.setVisible(false);
-	    JButton level7 = new JButton("7");
-	    JButton spacer6 = new JButton("             ");
-		spacer6.setVisible(false);
-	    JButton level8 = new JButton("8");
-	    JButton spacer7 = new JButton("             ");
-		spacer7.setVisible(false);
-	    JButton level9 = new JButton("9");
-	    JButton spacer8 = new JButton("             ");
-		spacer8.setVisible(false);
-	    JButton level10 = new JButton("10");
-	   
+		JButton level1 = new JButton("", fields);
+		level1.setRolloverIcon(fields);
+	
+	    JButton level2 = new JButton("", caves);
+	    level2.setRolloverIcon(caves);
+		
+	    JButton level3 = new JButton("", forest);
+	    level3.setRolloverIcon(forest);
+	    
+	    JButton level4 = new JButton("", desert);
+	    level4.setRolloverIcon(desert);
+	    
+	    JButton level5 = new JButton("", beach);
+	    level5.setRolloverIcon(beach);
+	    
+	    JButton level6 = new JButton("", island);
+	    level6.setRolloverIcon(island);
+	    
+	    JButton level7 = new JButton("", canyon);
+	    level7.setRolloverIcon(canyon);
+	    
+	    JButton level8 = new JButton("", mountain);
+	    level8.setRolloverIcon(mountain);
+	    
+	    JButton level9 = new JButton("", frost);
+	    level9.setRolloverIcon(frost);
+	    
+	    JButton Spacer = new JButton("");
+	    Spacer.setEnabled(false);
+	    
+	    JButton level10 = new JButton("", volc);
+	    level10.setRolloverIcon(volc);
+	    
+	    JButton Spacer2 = new JButton("");
+	    Spacer2.setEnabled(false);
 	  
 	    gbc.gridx = 0;
 	    gbc.gridy = 0;
 	    this.add(level1, gbc);
 	    gbc.gridx = 1;
-	    this.add(spacer1, gbc);
+	   
 	    gbc.gridx = 2;
 	    this.add(level2, gbc);
 	    gbc.gridx = 3;
-	    this.add(spacer2, gbc);
+	   
 	    gbc.gridx = 4;
 	    this.add(level3, gbc);
 	    gbc.gridx = 5;
-	    this.add(spacer3, gbc);
+	   
 	    gbc.gridx = 6;
 	    this.add(level4, gbc);
 	    gbc.gridx = 7;
-	    this.add(spacer4, gbc);
+	
 	    gbc.gridx = 8;
 	    this.add(level5, gbc);
 	    
@@ -70,29 +90,36 @@ public class LevelSelect extends JFrame
 	    gbc.gridy = 1;
 	    this.add(level6, gbc);
 	    gbc.gridx = 1;
-	    this.add(spacer5, gbc);
+	 
 	    gbc.gridx = 2;
 	    this.add(level7, gbc);
 	    gbc.gridx = 3;
-	    this.add(spacer6, gbc);
+
 	    gbc.gridx = 4;
 	    this.add(level8, gbc);
 	    gbc.gridx = 5;
-	    this.add(spacer7, gbc);
+	
 	    gbc.gridx = 6;
 	    this.add(level9, gbc);
 	    gbc.gridx = 7;
-	    this.add(spacer8, gbc);
+	 
+	    this.add(Spacer);
+	    
 	    gbc.gridx = 8;
 	    this.add(level10, gbc);
 	   
+	    this.add(Spacer2);
+	    
 	    
 	    level1.addActionListener(new ActionListener()
     	{
+	    	
     		public void actionPerformed(ActionEvent e)
     		{
+    			
     			 try {
 					new Stage(1);
+					dispose();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -108,6 +135,7 @@ public class LevelSelect extends JFrame
     		{
     			 try {
 					new Stage(2);
+					dispose();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -123,6 +151,7 @@ public class LevelSelect extends JFrame
     		{
     			 try {
 					new Stage(3);
+					dispose();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -138,6 +167,7 @@ public class LevelSelect extends JFrame
     		{
     			 try {
 					new Stage(4);
+					dispose();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -153,6 +183,7 @@ public class LevelSelect extends JFrame
     		{
     			 try {
 					new Stage(5);
+					dispose();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -168,6 +199,7 @@ public class LevelSelect extends JFrame
     		{
     			 try {
 					new Stage(6);
+					dispose();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -182,6 +214,7 @@ public class LevelSelect extends JFrame
     		{
     			 try {
 					new Stage(7);
+					dispose();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -197,6 +230,7 @@ public class LevelSelect extends JFrame
     		{
     			 try {
 					new Stage(8);
+					dispose();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -212,6 +246,7 @@ public class LevelSelect extends JFrame
      		{
      			 try {
  					new Stage(9);
+ 					dispose();
  				} catch (IOException e1) {
  					// TODO Auto-generated catch block
  					e1.printStackTrace();
@@ -227,6 +262,7 @@ public class LevelSelect extends JFrame
      		{
      			 try {
  					new Stage(10);
+ 					dispose();
  				} catch (IOException e1) {
  					// TODO Auto-generated catch block
  					e1.printStackTrace();

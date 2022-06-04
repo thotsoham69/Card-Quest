@@ -198,7 +198,7 @@ public class Game extends JFrame
     	{
     		public void actionPerformed(ActionEvent e)
     		{
-    			int confirm = JOptionPane.showConfirmDialog(null, "are you sure?, If you go to the shop now you will lose your progresss against this monster");
+    			int confirm = JOptionPane.showConfirmDialog(null, "are you sure?, If you go to the shop now you will lose your progress against this monster", "Confirm", JOptionPane.YES_NO_OPTION);
     			
     			if(confirm == 0)
     			{
@@ -377,7 +377,7 @@ public class Game extends JFrame
     			 read2.setEnabled(true);
     			 use3.setEnabled(true);
     			 read3.setEnabled(true);
-    			 
+    			 Energy.setText("Energy: "+ hero.getEnergy());
     			 
     		}
 
