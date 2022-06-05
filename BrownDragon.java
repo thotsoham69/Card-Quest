@@ -39,14 +39,14 @@ public class BrownDragon extends Enemies
 				JOptionPane.showMessageDialog(null, "the Dragon did " + getAttackStat() + " damage!");
 				break;
 			case "Debuff":
-				int lessen = hero.getAttackStat()/6;
-				hero.changeAttackStat(-hero.getAttackStat()/6);
-				JOptionPane.showMessageDialog(null, "the Dragon lowered your attack by " + lessen);
+				int lessen = hero.getAttackStat()/5;
+				hero.changeAttackStat(-hero.getAttackStat()/5);
+				JOptionPane.showMessageDialog(null, "the Dragon lowered your attack by " + lessen, "Lowered Attack", JOptionPane.PLAIN_MESSAGE);
 				break;
 			case "Heal":
 				int heals = this.getOHealth()/10;
 				heal(this.getOHealth()/10);
-				JOptionPane.showMessageDialog(null, "The Dragon Healed " + heals);
+				JOptionPane.showMessageDialog(null, "The Dragon Healed " + heals, "Healed", JOptionPane.PLAIN_MESSAGE);
 				break;
 			case "splAttack":
 				specialAttack(hero);
@@ -66,7 +66,7 @@ public class BrownDragon extends Enemies
 		int attack = this.getAttackStat()/5;
 		hero.takeDamageOverTime( rand + 1, this.getAttackStat()/5);
 		hero.takeDamage(this.getAttackStat()/2);
-		JOptionPane.showMessageDialog(null, "The Dragon burned you, you take " + this.getAttackStat()/2 + "damage and " + attack + " damage for " + rand + " turns" );
+		JOptionPane.showMessageDialog(null, "The Dragon burned you, you take " + this.getAttackStat()/2 + "damage and " + attack + " damage for " + rand + " turns" , "Special Attack", JOptionPane.PLAIN_MESSAGE );
 	}
     
 	public void  specialAttack2(Hero hero)
@@ -77,7 +77,7 @@ public class BrownDragon extends Enemies
 		{
 			int attack = this.getAttackStat()/5;
 			hero.takeDamageOverTime(2, this.getAttackStat()/5);
-			JOptionPane.showMessageDialog(null, "The Dragon burned you, you take " + attack + " damage for 2 turns" );
+			JOptionPane.showMessageDialog(null, "The Dragon burned you, you take " + attack + " damage for 2 turns", "Special Attack", JOptionPane.PLAIN_MESSAGE);
 		}
 		
 		if(rand == 2 || rand == 3)
@@ -86,7 +86,7 @@ public class BrownDragon extends Enemies
 			int attack = this.getAttackStat();
 			hero.takeDamage(this.getAttackStat());
 			this.heal(hero.getAttackStat());
-			JOptionPane.showMessageDialog(null, "The Dragon deals " + attack + " damage and heals " + heals + " damage");
+			JOptionPane.showMessageDialog(null, "The Dragon deals " + attack + " damage and heals " + heals + " damage", "Special Attack", JOptionPane.PLAIN_MESSAGE);
 		}
 		
 		if(rand == 4)
@@ -94,12 +94,14 @@ public class BrownDragon extends Enemies
 			int attack = this.getAttackStat() * 3;
 			hero.takeDamage(this.getAttackStat() * 3);
 			this.takeDamage(hero.getAttackStat() * 2);
-			JOptionPane.showMessageDialog(null, "The Dragon deals " + attack + " it also takes " + hero.getAttackStat() * 2 + " recoil damage");
+			JOptionPane.showMessageDialog(null, "The Dragon deals " + attack + " damage it also takes " + hero.getAttackStat() * 2 + " recoil damage" , "Special Attack", JOptionPane.PLAIN_MESSAGE);
 		}
 		
 		if(rand == 5)
 		{
+			int attack = this.getAttackStat() * 2;
 			hero.takeDamage(this.getAttackStat()*2);
+			JOptionPane.showMessageDialog(null, "The Dragon deals " + attack , "Special Attack", JOptionPane.PLAIN_MESSAGE);
 		}
 			
 	}

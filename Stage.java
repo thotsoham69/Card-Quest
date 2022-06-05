@@ -14,7 +14,11 @@ public class Stage
     private Game game;
     private boolean firstTime = false;
     private static File file = new File("SaveFile.txt");
-	@SuppressWarnings("unused")
+    
+    public Stage()
+    {
+    	
+    }
 	public Stage(int level) throws IOException
 	
 	{
@@ -87,7 +91,7 @@ public class Stage
 		
 		if(level == 1)
 		{
-			enemy = new Goblin(10, 3, 5);
+			enemy = new Goblin(30, 7, 20);
 			game = new Game("Fields.jpg", "Goblin.png", 500, 450, hero, enemy);
 			save(hero);
 		}
@@ -96,8 +100,72 @@ public class Stage
 		if(level == 2)
 		{
 		
-			enemy = new Goblin(10, 3, 5);
-			game = new Game("Fields.jpg", "BlueSlime.png", 500, 450, hero, enemy);
+			enemy = new Slime(90, 20, 50);
+			game = new Game("Caves.jpg", "BlueSlime.png", 500, 450, hero, enemy);
+			save(hero);
+		}
+		
+		if(level == 3)
+		{
+			enemy = new Goblin(150, 35, 170);
+			game = new Game("Forest.jpg", "Golem.png", 550, 500, hero, enemy);
+			save(hero);
+		}
+		
+		
+		if(level == 4)
+		{
+		
+			enemy = new Goblin(270, 50, 300);
+			game = new Game("Desert.jpg", "Mummy.png", 500, 550, hero, enemy);
+			save(hero);
+		}
+		
+		if(level == 5)
+		{
+			enemy = new Goblin(400, 75, 540);
+			game = new Game("Beach.jpg", "Crab.png", 550, 400, hero, enemy);
+			save(hero);
+		}
+		
+		
+		if(level == 6)
+		{
+		
+			enemy = new Goblin(670, 90, 700);
+			game = new Game("Island.jpg", "Tree.png", 400, 500, hero, enemy);
+			save(hero);
+		}
+		
+		if(level == 7)
+		{
+			enemy = new Goblin(790, 120, 850);
+			game = new Game("Canyon.jpg", "Eagle.png", 550, 500, hero, enemy);
+			save(hero);
+		}
+		
+		
+		if(level == 8)
+		{
+		
+			enemy = new BrownDragon(900, 160, 1000);
+			game = new Game("Mountains.jpg", "GreenDragon.png", 600, 550, hero, enemy);
+			save(hero);
+		}
+		
+		if(level == 9)
+		{
+			enemy = new Goblin(1000, 200, 1400);
+			game = new Game("Frost.jpg", "SnowMan.png", 500, 500, hero, enemy);
+			save(hero);
+		}
+		
+		
+		if(level == 10)
+		{
+		
+			enemy = new Goblin(1500, 250, 2000);
+			game = new Game("Volcano.jpg", "BlueSlime.png", 500, 450, hero, enemy);
 			save(hero);
 		}
 	}

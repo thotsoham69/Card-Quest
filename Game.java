@@ -17,11 +17,13 @@ public class Game extends JFrame
 	
 	private Hero hero;
 	private Enemies enemy;
+	
 	public Game(String back, String MonsterPIC, int MonsterWidth, int MonsterHeight, Hero hero, Enemies enemy) throws IOException
 	{
 		
 		//starts game with full screen
 	
+		
 		this.hero = hero;
 		this.enemy = enemy;
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -114,6 +116,7 @@ public class Game extends JFrame
         JMenuItem Shop = new JMenuItem("Shop");
         JMenuItem Stats = new JMenuItem("Stats");
         JMenuItem SaveClose = new JMenuItem("Save and Close");
+        JMenuItem returnTo = new JMenuItem("Return to level select");
         
         Options.add(Save);
         
@@ -123,6 +126,7 @@ public class Game extends JFrame
         
         Options.add(Stats);
         
+        Options.add(returnTo);
         
 	    menuBar.add(Options);
 	    
@@ -158,7 +162,7 @@ public class Game extends JFrame
     	{
     		public void actionPerformed(ActionEvent e)
     		{
-    			JOptionPane.showMessageDialog(null, "Attack: " + hero.getAttackStat() + "\n" + "Shield: " + hero.getShield() + "\n" + "Gold: " + hero.getGold() + "\n" + "Reward: " + enemy.getReward());
+    			JOptionPane.showMessageDialog(null, "Attack: " + hero.getAttackStat() + "\n" + "Shield: " + hero.getShield() + "\n" + "Gold: " + hero.getGold() + "\n" + "Reward: " + enemy.getReward() +"\n" + "Enemy shield: " + enemy.getShield()+"\n" + "Enemy attack: " + enemy.getAttackStat());
     			
     		}
 
@@ -215,6 +219,28 @@ public class Game extends JFrame
     		}
 
     	});
+        
+        returnTo.addActionListener(new ActionListener()
+     	{
+     		public void actionPerformed(ActionEvent e)
+     		{
+     			int confirm = JOptionPane.showConfirmDialog(null, "are you sure?, If you go to the Level select screen now you will lose your progress against this monster", "Confirm", JOptionPane.YES_NO_OPTION);
+     			
+     			if(confirm == 0)
+     			{
+     				try {
+ 						Stage.save(hero);
+ 					} catch (IOException e1) {
+ 						// TODO Auto-generated catch block
+ 						e1.printStackTrace();
+ 					}
+     				dispose();
+     				new LevelSelect();
+     				
+     			}
+     		}
+
+     	});
         
       //hand buttons Action listeners:
 	    read1.addActionListener(new ActionListener()
